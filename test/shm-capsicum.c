@@ -102,7 +102,7 @@ int main(int argc, char *argv[]){
 	fcntl(shmfd, F_SETFD, 0);
 
 	// CHECK: set LIB_PO_MAP=[[SHMFD]]
-	snprintf(buffer, sizeof(buffer),"%d", shmfd);
+	snprintf(buffer, sizeof(buffer), "%d", shmfd);
 	setenv("LIB_PO_MAP", buffer, 1);
 	printf("set LIB_PO_MAP=%s\n", getenv("LIB_PO_MAP"));
 

@@ -99,7 +99,7 @@ _open(const char *path, int flags, ...)
 	rel = find_relative(path, NULL);
 
 	// If the file is already opened, no need of relative opening!
-	if( strcmp(rel.relative_path,".") == 0 )
+	if (strcmp(rel.relative_path, ".") == 0)
 		return dup(rel.dirfd);
 	else
 		return openat(rel.dirfd, rel.relative_path, flags, mode);
@@ -121,7 +121,7 @@ access(const char *path, int mode)
 {
 	struct po_relpath rel = find_relative(path, NULL);
 
-	return faccessat(rel.dirfd, rel.relative_path, mode,0);
+	return faccessat(rel.dirfd, rel.relative_path, mode, 0);
 }
 
 /**
@@ -185,7 +185,7 @@ lstat(const char *path, struct stat *st)
 {
 	struct po_relpath rel = find_relative(path, NULL);
 
-	return fstatat(rel.dirfd, rel.relative_path,st,AT_SYMLINK_NOFOLLOW);
+	return fstatat(rel.dirfd, rel.relative_path, st, AT_SYMLINK_NOFOLLOW);
 }
 
 /**
@@ -242,7 +242,7 @@ stat(const char *path, struct stat *st)
 {
 	struct po_relpath rel = find_relative(path, NULL);
 
-	return fstatat(rel.dirfd, rel.relative_path,st, AT_SYMLINK_NOFOLLOW);
+	return fstatat(rel.dirfd, rel.relative_path, st, AT_SYMLINK_NOFOLLOW);
 }
 
 /**
