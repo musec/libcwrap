@@ -166,7 +166,7 @@ eaccess(const char *path, int mode)
 {
 	struct po_relpath rel = find_relative(path, NULL);
 
-	return faccessat(rel.dirfd, rel.relative_path, mode, 0);
+	return faccessat(rel.dirfd, rel.relative_path, mode, AT_EACCESS);
 }
 
 /**
